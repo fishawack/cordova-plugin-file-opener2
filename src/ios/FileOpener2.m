@@ -76,13 +76,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		//Opens the file preview
 		BOOL wasOpened = NO;
 
-		if (showPreview) {
-			wasOpened = [docController presentPreviewAnimated: YES];
-		} else {
+		//if (showPreview) {
+		//	wasOpened = [docController presentPreviewAnimated: YES];
+		//} else {
 			CDVViewController* cont = self.cdvViewController;
-			CGRect rect = CGRectMake(0, 0, cont.view.bounds.size.width, cont.view.bounds.size.height);
-			wasOpened = [docController presentOpenInMenuFromRect:rect inView:cont.view animated:YES];
-		}
+			CGRect rect = CGRectMake(0, 0, cont.view.bounds.size.width * 0.5, 0);
+			wasOpened = [docController presentOpenInMenuFromRect:rect inView:cont.view animated:NO];
+		//}
 
 		if(wasOpened) {
 			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: @""];
