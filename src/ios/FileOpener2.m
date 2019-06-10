@@ -33,11 +33,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 	NSString *path = [[command.arguments objectAtIndex:0] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
 	NSString *contentType = [command.arguments objectAtIndex:1];
-	BOOL showPreview = YES;
-
-	if ([command.arguments count] >= 3) {
-		showPreview = [[command.arguments objectAtIndex:2] boolValue];
-	}
 
 	CDVViewController* cont = (CDVViewController*)[super viewController];
 	self.cdvViewController = cont;
@@ -76,13 +71,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		//Opens the file preview
 		BOOL wasOpened = NO;
 
-		if (showPreview) {
-			wasOpened = [docController presentPreviewAnimated: NO];
-		} else {
-			CDVViewController* cont = self.cdvViewController;
-			CGRect rect = CGRectMake(0, 0, cont.view.bounds.size.width, cont.view.bounds.size.height);
-			wasOpened = [docController presentOpenInMenuFromRect:rect inView:cont.view animated:YES];
-		}
+		CDVViewController* cont = self.cdvViewController;
+		CGRect rect = CGRectMake(0, 0, cont.view.bounds.size.width, cont.view.bounds.size.height);
+		wasOpened = [docController presentOpenInMenuFromRect:rect inView:cont.view animated:YES];
 
 		if(wasOpened) {
 			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: @""];
