@@ -77,7 +77,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		BOOL wasOpened = NO;
 
 		if (showPreview) {
-			wasOpened = [docController presentPreviewAnimated: NO];
+			wasOpened = [docController presentPreviewAnimated: YES];
 		} else {
 			CDVViewController* cont = self.cdvViewController;
 			CGRect rect = CGRectMake(0, 0, cont.view.bounds.size.width, cont.view.bounds.size.height);
